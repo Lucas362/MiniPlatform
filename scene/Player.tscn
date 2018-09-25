@@ -1,46 +1,47 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Sky.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/idle/Idle0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/idle/Idle1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/idle/Idle2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/idle/Idle3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/walking/walking0.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/walking/walking1.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/walking/walking2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/walking/walking3.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/walking/walking4.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/walking/walking5.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Sky.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Run",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 14.0
-height = 28.0
+extents = Vector2( 10, 11.1225 )
 
 [node name="Player" type="KinematicBody2D" index="0"]
 
@@ -58,6 +59,7 @@ __meta__ = {
 
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -68,6 +70,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
+offset = Vector2( 0, -80 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -79,8 +82,8 @@ limit_bottom = 10000000
 limit_smoothed = false
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-smoothing_enabled = false
-smoothing_speed = 5.0
+smoothing_enabled = true
+smoothing_speed = 4.0
 offset_v = 0.0
 offset_h = 0.0
 drag_margin_left = 0.2
@@ -90,7 +93,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Smoothing" ]
+_sections_unfolded = [ "Limit" ]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="3"]
 
@@ -116,8 +119,8 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 
