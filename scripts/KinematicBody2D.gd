@@ -39,3 +39,4 @@ func _physics_process(delta):
 			motion.x = lerp(motion.x, 0, 0.05)
 
 	motion = move_and_slide(motion, UP)
+

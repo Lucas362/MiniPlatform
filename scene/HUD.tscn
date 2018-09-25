@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/left.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/right.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/keyboard.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/heart.png" type="Texture" id=4]
+
+[node name="HUD" type="CanvasLayer" index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Gamepad" type="Node2D" parent="." index="0"]
+
+[node name="Left" type="TouchScreenButton" parent="Gamepad" index="0"]
+
+position = Vector2( 0, 260 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 1 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_left"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Right" type="TouchScreenButton" parent="Gamepad" index="1"]
+
+modulate = Color( 0.996094, 0.984421, 0.984421, 1 )
+show_behind_parent = true
+position = Vector2( 110, 260 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_right"
+visibility_mode = 0
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Jump" type="TouchScreenButton" parent="Gamepad" index="2"]
+
+position = Vector2( 530, 260 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_up"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="heart" type="Sprite" parent="." index="1"]
+
+position = Vector2( 50, 40 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+
