@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Mini Platform Game"
-run/main_scene="res://scene/World.tscn"
+run/main_scene="res://scene/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [display]

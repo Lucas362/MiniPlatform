@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scene/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/WorlComplete.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/ground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/FloatGround.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scene/slime.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/FloatGround.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/slime.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/dino.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=7]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -28,13 +29,23 @@ scale = Vector2( 2.08156, 1 )
 position = Vector2( 1104, 288 )
 scale = Vector2( 2.08156, 1 )
 
-[node name="HUD" parent="." index="4" instance=ExtResource( 4 )]
+[node name="FloatGround" parent="." index="4" instance=ExtResource( 4 )]
 
-[node name="FloatGround" parent="." index="5" instance=ExtResource( 5 )]
+position = Vector2( 685.132, 180.861 )
 
-[node name="Slime" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Slime" parent="." index="5" instance=ExtResource( 5 )]
 
-position = Vector2( 576, 135.887 )
+position = Vector2( 326.761, 245.887 )
+flip = false
+end = 200
+velocity = 0.5
+
+[node name="Slime2" parent="." index="6" instance=ExtResource( 6 )]
+
+position = Vector2( 578.812, 135.562 )
 end = 220
+velocity = 1.0
+
+[node name="HUD" parent="." index="7" instance=ExtResource( 7 )]
 
 

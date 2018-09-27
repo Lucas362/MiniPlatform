@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Sky.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/HUD/container.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/HUD/play.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/HUD/pressedPlay.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/HUD/quit.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/HUD/jogo.png" type="Texture" id=7]
+
+[node name="StartMenu" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+nextWorld = "res://scene/World.tscn"
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 1.48233, 1 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="container" type="Sprite" parent="." index="1"]
+
+position = Vector2( 326.239, 180.584 )
+scale = Vector2( 10.2667, 13.664 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Play" type="TouchScreenButton" parent="." index="2"]
+
+position = Vector2( 215, 116.359 )
+scale = Vector2( 7, 7 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Quit" type="TouchScreenButton" parent="." index="3"]
+
+position = Vector2( 204, 212.354 )
+scale = Vector2( 8, 7 )
+normal = ExtResource( 6 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Title" type="Sprite" parent="." index="4"]
+
+position = Vector2( 315.174, 70.284 )
+scale = Vector2( 7.01997, 6.62244 )
+texture = ExtResource( 7 )
+
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
+
+

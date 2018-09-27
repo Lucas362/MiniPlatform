@@ -1,0 +1,45 @@
+extends CanvasLayer
+
+onready var player = get_node("../Player")
+
+var paused = false
+
+
+func _process(delta):
+	$heart.visible = (player.lives >= 1)
+	$heart2.visible = (player.lives >= 2)
+	$heart3.visible = (player.lives == 3)
+	
+	if player.lives < 0:
+		$GameOverContainer.position = Vector2(324, 73)
+		$pause.visible = false
+		get_tree().paused = true
+		player.visible = false
+
+
+func _on_pause_pressed():
+	paused = !paused
+	if paused:
+		$Container.position = Vector2(324, 73)
+	else:
+		$Container.position = Vector2(324, -173)
+	get_tree().paused = paused
+	$pause.visible = !paused
+
+
+func _on_resume_pressed():
+	_on_pause_pressed()
+
+
+func _on_Quit_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("scene/StartMenu.tscn")
+
+
+func _on_restart_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _on_Menu_pressed():
+	get_tree().change_scene("scene/StartMenu.tscn")
