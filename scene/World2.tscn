@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tileset/JungleDirtTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://scene/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/WorlComplete.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/dino.tscn" type="PackedScene" id=5]
 
 [node name="World2" type="Node" index="0"]
 
@@ -40,5 +41,12 @@ position = Vector2( 576, 256 )
 nextWorld = "res://scene/World.tscn"
 
 [node name="HUD" parent="." index="3" instance=ExtResource( 4 )]
+
+[node name="enemies" type="Node2D" parent="." index="4"]
+
+[node name="Slime" parent="enemies" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 240.58, 146.199 )
+end = 10
 
 

@@ -39,6 +39,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Play" type="TouchScreenButton" parent="." index="2"]
 
+pause_mode = 2
 position = Vector2( 215, 116.359 )
 scale = Vector2( 7, 7 )
 normal = ExtResource( 4 )
@@ -50,10 +51,11 @@ shape_visible = true
 passby_press = false
 action = ""
 visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="Quit" type="TouchScreenButton" parent="." index="3"]
 
+pause_mode = 2
 position = Vector2( 204, 212.354 )
 scale = Vector2( 8, 7 )
 normal = ExtResource( 6 )
@@ -65,7 +67,7 @@ shape_visible = true
 passby_press = false
 action = ""
 visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="Title" type="Sprite" parent="." index="4"]
 

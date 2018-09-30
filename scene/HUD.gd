@@ -6,9 +6,11 @@ var paused = false
 
 
 func _process(delta):
-	$heart.visible = (player.lives >= 1)
-	$heart2.visible = (player.lives >= 2)
-	$heart3.visible = (player.lives == 3)
+	var notLive = Color (0, 0, 0, 0.5)
+	var live = Color (1, 1, 1)
+	$heart.modulate = live if (player.lives >= 1) else notLive
+	$heart2.modulate = live if (player.lives >= 2) else notLive
+	$heart3.modulate = live if (player.lives == 3) else notLive
 	
 	if player.lives < 0:
 		$GameOverContainer.position = Vector2(324, 73)

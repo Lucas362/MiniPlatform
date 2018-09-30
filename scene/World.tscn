@@ -1,51 +1,128 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scene/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scene/WorlComplete.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scene/ground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scene/FloatGround.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/slime.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scene/dino.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/World.gd" type="Script" id=1]
+[ext_resource path="res://scene/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/WorlComplete.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/FloatGround.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene/slime.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scene/dino.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/heart.tscn" type="PackedScene" id=9]
 
 [node name="World" type="Node" index="0"]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 96, 192 )
 
-[node name="WorlComplete" parent="." index="1" instance=ExtResource( 2 )]
+[node name="WorlComplete" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 1232, 208 )
+position = Vector2( 3661.46, 241.291 )
 nextWorld = "res://scene/World2.tscn"
 
-[node name="StaticBody2D" parent="." index="2" instance=ExtResource( 3 )]
+[node name="HUD" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="ground" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="StaticBody2D" parent="ground" index="0" instance=ExtResource( 5 )]
 
 position = Vector2( 272, 288 )
 scale = Vector2( 2.08156, 1 )
+_sections_unfolded = [ "Collision" ]
 
-[node name="StaticBody2D2" parent="." index="3" instance=ExtResource( 3 )]
+[node name="StaticBody2D3" parent="ground" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 2546.58, 327.871 )
+scale = Vector2( 4.99521, 1 )
+
+[node name="StaticBody2D4" parent="ground" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 3657.49, 325.415 )
+scale = Vector2( 2.81435, 1 )
+
+[node name="StaticBody2D2" parent="ground" index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 1104, 288 )
 scale = Vector2( 2.08156, 1 )
 
-[node name="FloatGround" parent="." index="4" instance=ExtResource( 4 )]
+[node name="FloatGround" parent="ground" index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 685.132, 180.861 )
 
-[node name="Slime" parent="." index="5" instance=ExtResource( 5 )]
+[node name="FloatGround2" parent="ground" index="5" instance=ExtResource( 6 )]
+
+position = Vector2( 1579.17, 230.074 )
+
+[node name="FloatGround4" parent="ground" index="6" instance=ExtResource( 6 )]
+
+position = Vector2( 2313.78, 219.191 )
+
+[node name="FloatGround3" parent="ground" index="7" instance=ExtResource( 6 )]
+
+position = Vector2( 1834.92, 137.569 )
+
+[node name="enemies" type="Node2D" parent="." index="4"]
+
+editor/display_folded = true
+
+[node name="Slime" parent="enemies" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 326.761, 245.887 )
 flip = false
 end = 200
 velocity = 0.5
 
-[node name="Slime2" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Slime5" parent="enemies" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 2174.72, 284.058 )
+flip = false
+end = 200
+velocity = 0.5
+
+[node name="Slime6" parent="enemies" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 2201.81, 176.426 )
+flip = false
+end = 200
+velocity = 1.0
+
+[node name="Slime2" parent="enemies" index="3" instance=ExtResource( 8 )]
 
 position = Vector2( 578.812, 135.562 )
 end = 220
 velocity = 1.0
 
-[node name="HUD" parent="." index="7" instance=ExtResource( 7 )]
+[node name="Slime3" parent="enemies" index="4" instance=ExtResource( 8 )]
+
+position = Vector2( 1462.53, 184.011 )
+end = 220
+velocity = 1.5
+
+[node name="Slime4" parent="enemies" index="5" instance=ExtResource( 8 )]
+
+position = Vector2( 1462.66, 184.846 )
+end = 220
+velocity = 1.0
+
+[node name="Slime7" parent="enemies" index="6" instance=ExtResource( 8 )]
+
+position = Vector2( 3328.44, 280.696 )
+end = 220
+velocity = 2.0
+
+[node name="Slime8" parent="enemies" index="7" instance=ExtResource( 8 )]
+
+position = Vector2( 2655.09, 280.696 )
+end = 220
+velocity = 2.0
+
+[node name="heart" parent="." index="5" instance=ExtResource( 9 )]
+
+position = Vector2( 454.295, 232.687 )
 
 

@@ -209,11 +209,11 @@ _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="heart" type="Sprite" parent="." index="4"]
 
-modulate = Color( 1, 1, 1, 0.88949 )
+modulate = Color( 0, 0, 0, 0.425412 )
 position = Vector2( 47.3969, 32.623 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="heart2" type="Sprite" parent="." index="5"]
 

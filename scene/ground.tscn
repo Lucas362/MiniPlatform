@@ -38,8 +38,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="ground tile" type="Sprite" parent="." index="2"]
 
-position = Vector2( -0.678448, 62 )
-scale = Vector2( 15.9198, 4.25 )
+position = Vector2( -0.615646, 62 )
+scale = Vector2( 15.9277, 4.25 )
 texture = ExtResource( 2 )
 
 

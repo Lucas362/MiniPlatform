@@ -1,16 +1,16 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/idle/Idle0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/idle/Idle1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/idle/Idle2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/idle/Idle3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/walking/walking0.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/walking/walking1.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/walking/walking2.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/walking/walking3.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/walking/walking4.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/walking/walking5.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/walking/walking0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/walking/walking1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/walking/walking2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/walking/walking3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/walking/walking4.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/walking/walking5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/idle/Idle0.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/idle/Idle1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/idle/Idle2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/idle/Idle3.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/hit/hit0.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/hit/hit1.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/Sky.png" type="Texture" id=14]
@@ -18,17 +18,17 @@
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Run",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
@@ -38,7 +38,7 @@ animations = [ {
 "name": "Die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
@@ -55,6 +55,25 @@ extents = Vector2( 12.516, 11.1225 )
 custom_solver_bias = 0.0
 extents = Vector2( 13.3279, 12.5377 )
 
+[sub_resource type="Animation" id=4]
+
+resource_name = "hit"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.33702 ) ]
+}
+
 [node name="Player" type="KinematicBody2D" index="0" groups=[
 "player",
 ]]
@@ -64,7 +83,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -73,8 +92,9 @@ __meta__ = {
 
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -148,15 +168,36 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" index="0"]
 
-position = Vector2( 0, 2.59445 )
-scale = Vector2( 1, 0.993207 )
+position = Vector2( 0, 2.71355 )
+scale = Vector2( 1, 1.00087 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Timer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 2.01
+one_shot = true
+autostart = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/hit = SubResource( 4 )
+blend_times = [  ]
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
