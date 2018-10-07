@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 # class member variables go here, for example:
 # var a = 2

@@ -6,14 +6,18 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const ACCELERATION = 50
 const MAX_SPEED = 200
-const JUMP_HEIGHT = -550
+const JUMP_HEIGHT = -420
 
 var initial_position = Vector2()
 var lives = 3
 var motion = Vector2()
 var hitted = false
+var points
+
+var double_jump = false
 
 func _ready():
+	points = 0
 	initial_position = position
 
 func _physics_process(delta):
@@ -37,10 +41,13 @@ func _physics_process(delta):
 		friction = true
 		
 	if is_on_floor():
-		if Input.is_action_pressed("ui_up"):
+		double_jump = true
+		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
 		if friction:
 			motion.x = lerp(motion.x, 0, 0.2)
+	elif Input.is_action_just_released("ui_up") and motion.y < 0:
+		motion.y *= 0.5
 	else:
 		if motion.y < 0:
 			$Sprite.play("Jump")
@@ -49,6 +56,10 @@ func _physics_process(delta):
 			
 		if friction:
 			motion.x = lerp(motion.x, 0, 0.05)
+
+	if double_jump and Input.is_action_just_pressed("ui_up") and not is_on_floor():
+		motion.y = JUMP_HEIGHT
+		double_jump = false
 
 	motion = move_and_slide(motion, UP)
 
@@ -68,18 +79,15 @@ func damage():
 
 
 func _on_hitbox_body_entered(body):
-	if body.is_in_group("enemy") and not hitted:
-		if position.y < body.position.y-6:
-			motion.y = JUMP_HEIGHT+300
+	if body.is_in_group("enemy"):
+		if position.y < body.position.y-7:
+			points += 100
+			motion.y = JUMP_HEIGHT
 			body.die()
-		else:
+		elif not hitted:
 			hitted = true
 			$Sprite.play("Die")
 			damage()
-			
-	if body.is_in_group("heart"):
-		add_live()
-		body.collected()
 
 
 func _on_Timer_timeout():
@@ -89,7 +97,8 @@ func _on_Timer_timeout():
 		remove_collision_exception_with(enemy)
 
 
-func add_live():
-	if lives < 3:
-		lives = lives + 1
-
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("heart"):
+		area.collected()
+		if lives < 3:
+			lives = lives + 1

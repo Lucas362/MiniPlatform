@@ -6,6 +6,7 @@ var paused = false
 
 
 func _process(delta):
+	$Label.text = String(player.points)
 	var notLive = Color (0, 0, 0, 0.5)
 	var live = Color (1, 1, 1)
 	$heart.modulate = live if (player.lives >= 1) else notLive

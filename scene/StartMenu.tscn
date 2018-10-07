@@ -51,13 +51,13 @@ shape_visible = true
 passby_press = false
 action = ""
 visibility_mode = 0
-_sections_unfolded = [ "Pause", "Transform" ]
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="Quit" type="TouchScreenButton" parent="." index="3"]
 
 pause_mode = 2
-position = Vector2( 204, 212.354 )
-scale = Vector2( 8, 7 )
+position = Vector2( 213.426, 212.354 )
+scale = Vector2( 8.04592, 7 )
 normal = ExtResource( 6 )
 pressed = null
 bitmask = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scene/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/HUD/left.png" type="Texture" id=2]
@@ -12,6 +12,15 @@
 [ext_resource path="res://Sprites/HUD/menu.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/HUD/gameOverTitle.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/HUD/heart.png" type="Texture" id=12]
+[ext_resource path="res://font/crackman.regular.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 13 )
+_sections_unfolded = [ "Font", "Font/fallback", "Settings" ]
 
 [node name="HUD" type="CanvasLayer" index="0"]
 
@@ -194,8 +203,8 @@ _sections_unfolded = [ "Pause", "Transform" ]
 [node name="Menu" type="TouchScreenButton" parent="GameOverContainer" index="3"]
 
 pause_mode = 2
-position = Vector2( -46.0196, 95.3887 )
-scale = Vector2( 2.97775, 2.5 )
+position = Vector2( -43.5231, 95.3887 )
+scale = Vector2( 3.11202, 2.26214 )
 normal = ExtResource( 10 )
 pressed = null
 bitmask = null
@@ -230,6 +239,39 @@ position = Vector2( 117.589, 33.6243 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="." index="7"]
+
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 436.0
+margin_top = 6.0
+margin_right = 622.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "Pontos"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="Sprite" type="Sprite" parent="." index="8"]
+
+position = Vector2( 541.818, 20.6679 )
+scale = Vector2( 8.0462, 1.32803 )
+z_index = -1
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]
 
