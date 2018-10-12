@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dead.png-97199c342b254699432ed360937dc33f.stex"
+path="res://.import/coin2.png-c48c3fdd3aa0d4da7e3455b24043e7f9.stex"
 
 [deps]
 
-source_file="res://Sprites/Dino/dead.png"
-dest_files=[ "res://.import/dead.png-97199c342b254699432ed360937dc33f.stex" ]
+source_file="res://Sprites/coin/coin2.png"
+dest_files=[ "res://.import/coin2.png-c48c3fdd3aa0d4da7e3455b24043e7f9.stex" ]
 
 [params]
 
