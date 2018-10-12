@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scene/Coin.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/coin/coin1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/coin/coin2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/coin/coin3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/coin/coin4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/coin/coin5.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 8.24513
+
+[node name="Coin" type="Area2D" index="0" groups=[
+"coin",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "default"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 2 )
+
+

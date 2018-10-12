@@ -102,3 +102,7 @@ func _on_hitbox_area_entered(area):
 		area.collected()
 		if lives < 3:
 			lives = lives + 1
+
+	if area.is_in_group("coin"):
+		area.collected()
+		points += 150
